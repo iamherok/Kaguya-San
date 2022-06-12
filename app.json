@@ -6,6 +6,9 @@
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
    "success_url": "/",
   "env": {
+    "NAME": {
+    "description": "Name of your bot"
+    },
     "PREFIX": {
       "description": "Prefix of your bot"
     },
