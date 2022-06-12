@@ -263,12 +263,7 @@ break
 		   }
 		   }
 			   break
-			   case 'support':{
-	m.reply("The group link has been sent to you personal inbox")
-	arus.sendMessage(m.sender,{text:'https://chat.whatsapp.com/BncdJRVCfOAK1WSfe5DLNJ'},{quoted:m})
-	
-}
-break
+			   
     case'lead':
     case'leaderboard':
   const mems_id = new Array()
