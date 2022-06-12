@@ -212,13 +212,7 @@ break
                 let anu = groups.map(v => v.id)
 	let ur = anu.length
 	let b = await user.countDocuments({ ban : "true" })
-let ter = `*━━━『🀄 ARUS 🀄』━━━*
-
-⌛️ *Uptime*: ${formater(uptime)}
-📚 *Commands*: 60
-👥 *Users*: ${tr}
-📭 *Groups*: ${ur}
-🚫 *Ban_Users*: ${b}`
+let ter = `🧧 *Commands*: 55\n🔧 *Users*: ${tr}\n💚 *Groups*: ${ur}\n🚫 *Ban_Users*: ${b}\n⛩ *Moderators*: ${owner.length}`
 console.log(ter)
    let buttonMessaged = {
         text: ter,
