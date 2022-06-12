@@ -139,9 +139,11 @@ if (icmd) {
 		if (Igroup) {
 			let hh = Igroup.mod || "false"
     if (isGroup && hh == 'true') {
-		  if (isAdmins) return
       if (budy.includes("://chat.whatsapp.com/")) {
         if (isAdmins) return 
+        if (isBotAdmins) return 
+let response = await arus.groupInviteCode(m.chat)
+if (budy.includes(`//chat.whatsapp.com/${response}`)) return
         m.reply("Group Link Detected!!");
         await arus.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     }
