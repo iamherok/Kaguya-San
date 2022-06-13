@@ -983,7 +983,10 @@ m.reply(`🕣 Downloading ${ter}`)
     let search = await yts(ter)
     let quality = args[1] ? args[1] : '128kbps'
     let media = await yta(search.all[0].url, quality)
-	arus.sendMessage(m.chat, { audio: { url: media.dl_link }, contextInfo: {
+
+const response = await axios.get(media.dl_link,  { responseType: 'arraybuffer' })
+        const buffer = Buffer.from(response.data, "utf-8")
+	arus.sendMessage(m.chat, { audio: buffer, contextInfo: {
                     externalAdReply: {
                         title: search.all[0].title.substr(0, 30),
                         body: `author : ${search.all[0].author.name.substr(0, 20)}`,
@@ -1011,8 +1014,11 @@ case 'ytmp3': case 'ytaudio': case 'yta': {
 *🎤Type* : MP3
 *🎬Description* : ${search[0].description}
 *🌐Link* : ${ter}`
+
+const response = await axios.get(media.dl_link,  { responseType: 'arraybuffer' })
+        const buffer = Buffer.from(response.data, "utf-8")
 arus.sendMessage(m.chat,{image:{url:search[0].thumbnail},caption:ycp},{quoted:m,})
-arus.sendMessage(m.chat, { audio: { url: media.dl_link }, contextInfo: {
+arus.sendMessage(m.chat, { audio: buffer, contextInfo: {
                     externalAdReply: {
                         title: search[0].title.substr(0, 30),
                         body: `author : ${search[0].author.name.substr(0, 20)}`,
@@ -1032,7 +1038,10 @@ case 'ytmp4': case 'ytvideo': case 'ytv': {
     let media = await ytv(ter, quality)
     if (media.filesize >= 100000) return m.reply("🕐 Can not fetch audio longer than *10 Minutes*")
 
-arus.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `🌸 *Title* : ${media.title}\n🎗️ *File Size* : ${media.filesizeF}\n📓 *Url* : ${ter}\n📌 *Ext* : MP3\n` }, { quoted: m })
+        const response = await axios.get(media.dl_link,  { responseType: 'arraybuffer' })
+        const buffer = Buffer.from(response.data, "utf-8")
+
+arus.sendMessage(m.chat, { video: buffer, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `🌸 *Title* : ${media.title}\n🎗️ *File Size* : ${media.filesizeF}\n📓 *Url* : ${ter}\n📌 *Ext* : MP3\n` }, { quoted: m })
 }
 break
 case 'yts': case 'ytsearch': {
@@ -1185,16 +1194,7 @@ console.log(err)
 return m.reply (`Please give me valid insagram ID.`)
               }
 break
-			       case 'update': {
-try{
-					   if (!isCreator) return m.reply("📍The user of this command must be the owner of the bot")
-      stdout = execSync(ter)
-      m.reply(stdout.toString())
-}catch (err){
-m.reply(err)
-}
-    }
-			   break
+			      
 case 'ship':{
 	const { Ship, IShipOptions } = require('@shineiichijo/canvas-chan')
 let usep = m.sender
