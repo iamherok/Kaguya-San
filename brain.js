@@ -1040,8 +1040,9 @@ case 'ytmp4': case 'ytvideo': case 'ytv': {
 
         const response = await axios.get(media.dl_link,  { responseType: 'arraybuffer' })
         const buffer = Buffer.from(response.data, "utf-8")
+        const lit = await getBuffer(buffer)
 
-arus.sendMessage(m.chat, { video: buffer, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `🌸 *Title* : ${media.title}\n🎗️ *File Size* : ${media.filesizeF}\n📓 *Url* : ${ter}\n📌 *Ext* : MP3\n` }, { quoted: m })
+arus.sendMessage(m.chat, { video: lit, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `🌸 *Title* : ${media.title}\n🎗️ *File Size* : ${media.filesizeF}\n📓 *Url* : ${ter}\n📌 *Ext* : MP3\n` }, { quoted: m })
 }
 break
 case 'yts': case 'ytsearch': {
