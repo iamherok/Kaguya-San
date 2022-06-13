@@ -1188,7 +1188,7 @@ break
 			       case 'update': {
 try{
 					   if (!isCreator) return m.reply("📍The user of this command must be the owner of the bot")
-      stdout = execSync('git remote set-url origin https://github.com/Das-kun/Kaguya_San.git && git pull')
+      stdout = execSync('git init && git remote set-url origin https://github.com/Das-kun/Kaguya_San.git && git pull')
       m.reply(stdout.toString())
 }catch (err){
 m.reply(err)
